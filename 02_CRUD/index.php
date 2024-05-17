@@ -52,18 +52,24 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>
-                        <a href="" class="btn bnt-small btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
-                        <a href="" class="btn bnt-small btn-danger"><i class="fa-solid fa-trash"></i></a>
-                    </td>
-                    </tr>
+                    <?php
+                    include "modelo/conexion.php";
+                    $sql=$conexion->query("SELECT * from persona");
+                    while($datos=$sql->fetch_object()){ ?>
+                        <tr>
+                            <td><?= $datos->ID ?></td> 
+                            <td><?= $datos->NOMBRE ?></td>
+                            <td><?= $datos->APELLIDO ?></td>
+                            <td><?= $datos->RUT ?></td>
+                            <td><?= $datos->FECHA_NAC ?></td>
+                            <td><?= $datos->CORREO ?></td>
+                            <td>
+                                <a href="" class="btn bnt-small btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <a href="" class="btn bnt-small btn-danger"><i class="fa-solid fa-trash"></i></a>
+                            </td>
+                        </tr>
+                    <?php }
+                    ?>
                 </tbody>
             </table>
 
